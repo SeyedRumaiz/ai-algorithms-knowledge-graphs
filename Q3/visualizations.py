@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 import numpy as np
 
-def visualize_path(grid, path, start, goal):
+def visualize_path(grid, path, start, goal, title):
     grid_visual = np.array(grid)
 
     plt.figure(figsize=(6, 6))
@@ -20,7 +20,7 @@ def visualize_path(grid, path, start, goal):
              color="green", fontweight="bold")
 
     rows, cols = grid_visual.shape
-    # Hide tick labels (optional, but clean)
+    # Hide tick labels
     plt.xticks(range(cols))
     plt.yticks(range(rows))
 
@@ -29,7 +29,7 @@ def visualize_path(grid, path, start, goal):
     plt.yticks(np.arange(-0.5, rows, 1), minor=True)
 
     plt.grid(which="minor", color="black", linestyle="-", linewidth=1)
-    plt.title(f"Navigation from {start} to {goal} using IDDFS", fontsize=16, fontweight="bold")
+    plt.title(title, fontsize=16, fontweight="bold")
 
     plt.xlim(-0.5, cols - 0.5)
     plt.ylim(rows - 0.5, -0.5)  # keeps (0,0) at top-left like the maze

@@ -51,7 +51,9 @@ class BestFirstSearch(SearchAlgorithm):
                 while current:
                     path.append(current)
                     current = came_from[current]  # Start from goal then goes to parent
-                return visited_order, time, path[::-1]  # Reverse so it is start to goal
+
+                total_cost, straight, diagonal = self.get_cost(path)
+                return visited_order, time, path[::-1], total_cost, straight, diagonal  # Reverse so it is start to goal
 
             # Check all neighbors in all 8 directions
             neighbors = []

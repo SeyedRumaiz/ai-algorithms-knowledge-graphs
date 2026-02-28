@@ -1,5 +1,3 @@
-from fontTools.varLib.models import nonNone
-
 from search_algorithm import SearchAlgorithm
 
 
