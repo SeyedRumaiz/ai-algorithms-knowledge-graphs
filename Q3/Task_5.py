@@ -1,6 +1,8 @@
 import numpy as np
-from visualizations import visualize_path, plot, plot_mean_times, plot_mean_path_lengths, plot_variance
-from heuristics import euclidean, manhattan, octile, chebyshev
+import random
+
+from visualizations import visualize_path, plot
+from heuristics import chebyshev
 from best_first_search import BestFirstSearch
 from iterative_deepening_DFS import IterativeDeepeningDFS
 from maze_utils import generate_maze, generate_coordinates
@@ -13,8 +15,12 @@ best_lengths = []
 
 print("="*50)
 
+random.seed(42)
+
 
 for i in range(3):
+    print("="*50)
+    print(f"Running for {i+1}-th run")
     start_coords, goal_coords = generate_coordinates()
     maze, barriers = generate_maze(start_coords, goal_coords)
 
@@ -27,9 +33,15 @@ for i in range(3):
     iddfs_times.append(iddfs_time)
     iddfs_lengths.append(len(iddfs_result) if iddfs_result else 0)
 
-    best_total_visited, best_time, best_result = best_first_search.search()
+    visualize_path(maze, iddfs_result, start_coords, goal_coords, title="IDDFS path")
+
+    (best_total_visited, best_time, best_result,
+     best_total_cost, best_straight, best_diagonal) = best_first_search.search()
     best_lengths.append(len(best_result) if best_result else 0)
     best_times.append(best_time)
+
+    visualize_path(maze, best_result, start_coords, goal_coords, title="BestFS path")
+    print("="*50)
 
     print("Total visited (IDDFS):", iddfs_total_visited)
     print("Time (IDDFS):", iddfs_time)

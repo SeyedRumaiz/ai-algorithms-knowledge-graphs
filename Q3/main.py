@@ -1,9 +1,10 @@
 import numpy as np
-from visualizations import visualize_path, plot, plot_mean_times, plot_mean_path_lengths, plot_variance
+from visualizations import visualize_path, plot
 from heuristics import euclidean, manhattan, octile, chebyshev
 from best_first_search import BestFirstSearch
 from iterative_deepening_DFS import IterativeDeepeningDFS
 from maze_utils import generate_maze, generate_coordinates
+import random
 
 start, goal = generate_coordinates()
 maze, barriers = generate_maze(start, goal)
@@ -11,6 +12,8 @@ print(barriers)
 iddfs = IterativeDeepeningDFS(maze, start, goal)
 
 print(maze)
+
+random.seed(42)
 
 print("----------------------------------")
 
