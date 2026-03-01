@@ -1,19 +1,20 @@
 import matplotlib.pyplot as plt
 import numpy as np
 
+
 def visualize_path(grid, path, start, goal, title):
     grid_visual = np.array(grid)
 
     plt.figure(figsize=(6, 6))
     plt.imshow(grid_visual, cmap="binary", origin="upper")
 
-    # path is list of (x, y)
+    # Path is list of (x, y)
     if path:
         xs = [x for x, y in path]
         ys = [y for x, y in path]
         plt.plot(xs, ys, color="red", linewidth=2, marker="o", markersize=4)
 
-    # start/goal are (x, y)
+    # Start/goal are (x, y)
     plt.text(start[0], start[1], "S", ha="center", va="center",
              color="blue", fontweight="bold")
     plt.text(goal[0], goal[1], "G", ha="center", va="center",
@@ -32,9 +33,10 @@ def visualize_path(grid, path, start, goal, title):
     plt.title(title, fontsize=16, fontweight="bold")
 
     plt.xlim(-0.5, cols - 0.5)
-    plt.ylim(rows - 0.5, -0.5)  # keeps (0,0) at top-left like the maze
+    plt.ylim(rows - 0.5, -0.5)  # Keeps (0,0) at top-left like the maze
 
     plt.show()
+
 
 def plot(iddfs, best, title, ylabel, filename):
     labels = ["IDDFS", "BestFS"]
@@ -65,3 +67,29 @@ def plot(iddfs, best, title, ylabel, filename):
     plt.tight_layout()
     plt.savefig(filename, dpi=300)
     plt.show()
+
+
+def show_summary_run(start, goal, barriers, visited, time_taken, path, cost=None,
+                    straight=None, diagonal=None, title=None):
+    print("\n" + "=" * 70)
+    print(title)
+    print("=" * 70)
+    print(f"Start (x,y)  :  {start}")
+    print(f"Goal (x,y)   :  {goal}")
+    print(f"Barriers     :  {sorted(barriers)}")
+    print(f"Time (mins)  :  {time_taken} (1 min per expanded node)")
+    print(f"Visited (#)  :  {len(visited)}")
+    if cost is not None:
+        print(f"Path cost  :  {cost:.3f}")
+    if straight is not None and diagonal is not None:
+        print(f"Moves        : straight={straight}, diagonal={diagonal}")
+
+    print("-"*70)
+    print(f"Final path (#nodes={len(path)}):")
+    print("  " + " -> ".join(map(str, path)))
+
+    print("-"*70)
+    print("Visited nodes (prefix):")
+    preview = visited[:40]
+    print("  " + ", ".join(map(str, preview)) + (" ..." if len(visited) > 40 else ""))
+    print("="*70 + "\n")

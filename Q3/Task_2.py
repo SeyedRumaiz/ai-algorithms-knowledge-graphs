@@ -1,6 +1,5 @@
 from visualizations import visualize_path, show_summary_run
-from heuristics import chebyshev
-from best_first_search import BestFirstSearch
+from iterative_deepening_DFS import IterativeDeepeningDFS
 from maze_utils import generate_maze, generate_coordinates
 import random
 
@@ -9,11 +8,11 @@ random.seed(42)
 start_coords, goal_coords = generate_coordinates()
 maze, barriers = generate_maze(start_coords, goal_coords)
 
-bestfs = BestFirstSearch(maze, start_coords, goal_coords, heuristic=chebyshev)
-visited, time_taken, path, cost, straight, diagonal = bestfs.search()
+iddfs = IterativeDeepeningDFS(maze, start_coords, goal_coords)
+visited, time_taken, path, cost, straight, diagonal = iddfs.search()
 
 show_summary_run(start_coords, goal_coords, barriers, visited,
                  time_taken, path, cost, straight, diagonal,
-                 title="Greedy Best First Search (Chebyshev) - Run Summary")
+                 title="Iterative Deepening DFS - Run Summary")
 visualize_path(maze, path, start_coords, goal_coords,
-               title=f"Path from {start_coords} to {goal_coords} (BestFS Chebyshev)")
+               title=f"Path from {start_coords} to {goal_coords} (IDDFS)")
