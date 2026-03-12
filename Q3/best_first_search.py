@@ -3,29 +3,71 @@ from search_algorithm import SearchAlgorithm
 
 
 class BestFirstSearch(SearchAlgorithm):
+    """
+    Implementation of the Best-First Search algorithm.
 
-    def __init__(self, maze, start, goal, heuristic):
-        super(BestFirstSearch, self).__init__(maze, start, goal)
+    This search strategy expands the node that appears closest to the
+    goal according to a heuristic function. The heuristic function
+    estimates the distance between a node and the goal.
+    """
+    def __init__(self, maze, start, goal, heuristic) -> None:
+        """
+        Initializes the Best-First Search algorithm.
+
+        Args:
+            maze (list[list[int]]):
+                The maze grid where valid cells can be traversed.
+
+            start (tuple[int, int]):
+                Coordinates of the starting node in the maze.
+
+            goal (tuple[int, int]):
+                Coordinates of the goal node.
+
+            heuristic (callable):
+                A function that estimates the distance between
+                two nodes. Used to prioritize which node to explore next.
+        """
+        super().__init__(maze, start, goal)
         self.heuristic = heuristic
 
 
     def search(self):
         """
-        Performs best first search recursively.
+        Performs the Greedy Best-First Search algorithm.
+
         It expands the node that looks closest to the goal using
         a distance heuristic.
 
         Returns:
-            path: Path of recursion.
-            time: Time of recursion.
+            visited_order (list[tuple[int, int]]):
+                List of nodes explored during the search.
+
+            time (int):
+                Number of nodes visited in the search.
+
+            result (list[tuple[int, int]] | None):
+                The path from start node to the goal node if
+                a solution exists.
+
+            total_cost (float | None):
+                Total cost of the solution.
+
+            straight (int | None):
+                Number of straight movements in the path.
+
+            diagonal (int | None):
+                Number of diagonal movements in the path.
         """
 
-        # Define min-heap tp store tuple (priority, node)
-        # where priority is the heuristic
-        open_list = []  # Pop the node with smallest heuristic value
+        # Define min-heap to store (priority, node)
+        # Priority is the heuristic distance to the goal
+        open_list = []
+
+        # Insert the start node with its heuristic priority
         heapq.heappush(open_list, (self.heuristic(self.start, self.goal), self.start))
 
-        # Parent tracking
+        # Path reconstruction dictionary
         came_from = {self.start: None}
         visited = set()  # Nodes already expanded
         visited_order = []  # Visited order of nodes
@@ -37,7 +79,7 @@ class BestFirstSearch(SearchAlgorithm):
             # Pick the smallest heuristic node
             _, current = heapq.heappop(open_list)
 
-            # Skip duplicates (same node from different parents)
+            # Skip nodes that have already been expanded
             if current in visited:
                 continue
 
@@ -74,4 +116,4 @@ class BestFirstSearch(SearchAlgorithm):
                 # Push into queue with chebyshev as the priority
                 heapq.heappush(open_list, (self.heuristic(neighbor, self.goal), neighbor))
 
-        return visited_order, time, None  # If no path exists
+        return visited_order, time, None, None, None, None  # If no path exists

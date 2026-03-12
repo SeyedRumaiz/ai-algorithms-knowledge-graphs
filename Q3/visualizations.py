@@ -2,7 +2,17 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 
-def visualize_path(grid, path, start, goal, title):
+def visualize_path(grid, path, start, goal, title) -> None:
+    """
+
+
+    :param grid:
+    :param path:
+    :param start:
+    :param goal:
+    :param title:
+    :return:
+    """
     grid_visual = np.array(grid)
 
     plt.figure(figsize=(6, 6))
@@ -38,7 +48,16 @@ def visualize_path(grid, path, start, goal, title):
     plt.show()
 
 
-def plot(iddfs, best, title, ylabel, filename):
+def plot(iddfs, best, title, ylabel, filename) -> None:
+    """
+
+    :param iddfs:
+    :param best:
+    :param title:
+    :param ylabel:
+    :param filename:
+    :return:
+    """
     labels = ["IDDFS", "BestFS"]
     values = [iddfs, best]
 
@@ -70,7 +89,22 @@ def plot(iddfs, best, title, ylabel, filename):
 
 
 def show_summary_run(start, goal, barriers, visited, time_taken, path, cost=None,
-                    straight=None, diagonal=None, title=None):
+                    straight=None, diagonal=None, title=None) -> None:
+    """
+
+
+    :param start:
+    :param goal:
+    :param barriers:
+    :param visited:
+    :param time_taken:
+    :param path:
+    :param cost:
+    :param straight:
+    :param diagonal:
+    :param title:
+    :return:
+    """
     print("\n" + "=" * 70)
     print(title)
     print("=" * 70)

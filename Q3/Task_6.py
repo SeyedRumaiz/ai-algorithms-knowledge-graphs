@@ -22,6 +22,7 @@ random.seed(SEED)
 
 runs = []
 
+# Generate 3 random mazes
 for i in range(N_RUNS):
     start_coords, goal_coords = generate_coordinates()
     maze, barriers = generate_maze(start_coords, goal_coords)
