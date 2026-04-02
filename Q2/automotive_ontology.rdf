@@ -9,33 +9,84 @@
    <!-- Header -->
    <owl:Ontology rdf:about="http://www.example.org/automotive">
       <dc:title>
-         Ontology for Automotive Industry
+         Ontology for Automotive Industry.
       </dc:title>
    </owl:Ontology>
 
-   <!---     Classes       -->
+   <!--  ////   Classes   ////    -->
 
    <!-- Vehicle Components -->
    <owl:Class rdf:about="http://www.example.org/automotive#Vehicle">
-
+        <dc:title>Vehicle</dc:title>
+        <dc:description>
+            A road vehicle manufactured within the automotive production lifecycle.
+        </dc:description>
    </owl:Class>
+
    <owl:Class rdf:about="http://www.example.org/automotive#Subsystem">
-
+        <rdfs:comment>
+            A major functional unit of a vehicle that groups related
+            components and faults.
+        </rdfs:comment>
+        <dc:description>
+            Represents the major functional divisions of a vehicle such as the
+            engine system, braking system, suspension system, and electrical system.
+            Subsystems help organize components and diagnose faults at a higher level.
+        </dc:description>
    </owl:Class>
+
    <owl:Class rdf:about="http://www.example.org/automotive#PowertrainSystem">
       <rdfs:subClassOf rdf:resource="http://www.example.org/automotive#Subsystem"/>
-   </owl:Class>
-   <owl:Class rdf:about="http://www.example.org/automotive#BrakeSystem">
-      <rdfs:subClassOf rdf:resource="http://www.example.org/automotive#Subsystem"/>
-   </owl:Class>
-   <owl:Class rdf:about="http://www.example.org/automotive#InfotainmentSystem">
-      <rdfs:subClassOf rdf:resource="http://www.example.org/automotive#Subsystem"/>
+      <dc:title>Powertrain System</dc:title>
+      <dc:description>
+        The system responsible for generating and delivering power to move the vehicle.
+      </dc:description>
    </owl:Class>
 
-   <owl:Class rdf:about="http://www.example.org/automotive#ECU"/>
-   <owl:Class rdf:about="http://www.example.org/automotive#Sensor"/>
-   <owl:Class rdf:about="http://www.example.org/automotive#Actuator"/>
-   <owl:Class rdf:about="http://www.example.org/automotive#PhysicalParameter"/>
+   <owl:Class rdf:about="http://www.example.org/automotive#BrakeSystem">
+      <rdfs:subClassOf rdf:resource="http://www.example.org/automotive#Subsystem"/>
+      <dc:title>Brake System</dc:title>
+      <dc:description>
+        The subsystem responsible for slowing or stopping the vehicle safety.
+      </dc:description>
+   </owl:Class>
+
+   <owl:Class rdf:about="http://www.example.org/automotive#InfotainmentSystem">
+      <rdfs:subClassOf rdf:resource="http://www.example.org/automotive#Subsystem"/>
+      <dc:title>Infotainment System</dc:title>
+      <dc:description>
+        The subsystem responsible for multimedia, navigation, and connectivity
+        services to the vehicle occupants.
+      </dc:description>
+   </owl:Class>
+
+   <owl:Class rdf:about="http://www.example.org/automotive#ECU">
+      <dc:title>Electric Control Unit</dc:title>
+      <dc:description>
+        A device that controls electrical systems or subsystems in the vehicle.
+      </dc:description>
+   </owl:Class>
+
+   <owl:Class rdf:about="http://www.example.org/automotive#Sensor">
+      <dc:title>Sensor</dc:title>
+      <dc:description>
+        A device that measures physical parameters like temperature, speed, or pressure.
+      </dc:description>
+   </owl:Class>
+
+   <owl:Class rdf:about="http://www.example.org/automotive#Actuator">
+      <dc:title>Actuator</dc:title>
+      <dc:description>
+        A device that performs actions in the vehicle.
+      </dc:description>
+   </owl:Class>
+
+   <owl:Class rdf:about="http://www.example.org/automotive#PhysicalParameter">
+      <dc:title>Physical Parameter</dc:title>
+      <dc:description>
+        A measurable characteristic of the vehicle, like temperature, speed, or pressure.
+      </dc:description>
+   </owl:Class>
 
    <!-- Manufacturing -->
    <owl:Class rdf:about="http://www.example.org/automotive#ManufacturingProcess"/>
