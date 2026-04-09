@@ -3,8 +3,17 @@ from abc import ABC, abstractmethod
 
 
 class SearchAlgorithm(ABC):
+    """
+    Abstract class for a search algorithm.
+    """
 
     def __init__(self, maze, start, goal):
+        """
+
+        :param maze:
+        :param start:
+        :param goal:
+        """
         self.maze = maze
         self.start = start
         self.goal = goal
@@ -70,6 +79,12 @@ class SearchAlgorithm(ABC):
 
 
     def get_cost(self, path):
+        """
+        Calculates the cost of the path.
+
+        :param path:
+        :return:
+        """
         n_iter = len(path) - 1
         total_cost = 0
         straight = 0

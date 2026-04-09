@@ -88,6 +88,7 @@ class BestFirstSearch(SearchAlgorithm):
             visited_order.append(current)
             time += 1  # For sum of all nodes explored (total time)
 
+            # Goal test
             if current == self.goal:
                 path = []  # Reconstruct path if reached goal
                 while current:

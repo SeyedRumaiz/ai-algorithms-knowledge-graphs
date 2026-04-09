@@ -77,6 +77,7 @@ def generate_maze(start_coords: Tuple[int, int],
             continue
         barriers.add(barrier)
 
+    # Mark the barriers as 1
     for (x, y) in barriers:
         maze[y][x] = 1
 

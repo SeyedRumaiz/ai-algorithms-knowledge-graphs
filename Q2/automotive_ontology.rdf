@@ -123,6 +123,10 @@
    <owl:ObjectProperty rdf:about="http://www.example.org/automotive#qaEnsuresCompliance"/>
    <owl:ObjectProperty rdf:about="http://www.example.org/automotive#securityProtects"/>
    <owl:ObjectProperty rdf:about="http://www.example.org/automotive#maintenanceAppliedTo"/>
+   <owl:ObjectProperty rdf:about="http://www.example.org/automotive#monitorsProcess"/>
+   <owl:ObjectProperty rdf:about="http://www.example.org/automotive#supportsStandard"/>
+   <owl:ObjectProperty rdf:about="http://www.example.org/automotive#supportsProcess"/>
+   <owl:ObjectProperty rdf:about="http://www.example.org/automotive#vehicleCompliesWith"/>
 
    <!--     Individuals     -->
 
@@ -133,6 +137,7 @@
       <auto:hasSubSystem rdf:resource="http://www.example.org/automotive#BrakeSystemX"/>
       <auto:producedByProcess rdf:resource="http://www.example.org/automotive#Stamping"/>
       <auto:producedByProcess rdf:resource="http://www.example.org/automotive#InjectionMoulding"/>
+      <auto:vehicleCompliesWith rdf:resource="http://www.example.org/automotive#IATF16949"/>
    </rdf:Description>
 
    <rdf:Description rdf:about="http://www.example.org/automotive#Powertrain">
@@ -187,6 +192,7 @@
 
    <rdf:Description rdf:about="http://www.example.org/automotive#AGV">
       <rdf:type rdf:resource="http://www.example.org/automotive#FactoryTechnology"/>
+      <auto:supportsProcess rdf:resource="http://www.example.org/automotive#Stamping"/>
    </rdf:Description>
 
    <rdf:Description rdf:about="http://www.example.org/automotive#DigitalTwin">
@@ -198,11 +204,13 @@
       <rdf:type rdf:resource="http://www.example.org/automotive#QAActivity"/>
       <auto:qaDocuments rdf:resource="http://www.example.org/automotive#InspectionReport"/>
       <auto:qaEnsuresCompliance rdf:resource="http://www.example.org/automotive#IATF16949"/>
+      <auto:monitorsProcess rdf:resource="http://www.example.org/automotive#Stamping"/>
       <auto:detectsDefect rdf:resource="http://www.example.org/automotive#BrakeFailure"/>
    </rdf:Description>
 
    <rdf:Description rdf:about="http://www.example.org/automotive#InspectionReport">
       <rdf:type rdf:resource="http://www.example.org/automotive#Documentation"/>
+      <auto:supportsStandard rdf:resource="http://www.example.org/automotive#IATF16949"/>
    </rdf:Description>
 
    <rdf:Description rdf:about="http://www.example.org/automotive#BrakeFailure">
