@@ -60,27 +60,92 @@
       </dc:description>
    </owl:Class>
 
-   <owl:Class rdf:about="http://www.example.org/automotive#Sensor"/>
-   <owl:Class rdf:about="http://www.example.org/automotive#Actuator"/>
-   <owl:Class rdf:about="http://www.example.org/automotive#PhysicalParameter"/>
+   <owl:Class rdf:about="http://www.example.org/automotive#Sensor">
+      <rdfs:label>
+         Sensor
+      </rdfs:label>
+      <rdfs:comment>
+         A hardware device that detects and measures physical properties.
+      </rdfs:comment>
+      <dc:description>
+         Monitors environmental and mechanical parameters
+         to provide data to the ECU.
+      </dc:description>
+   </owl:Class>
+
+   <owl:Class rdf:about="http://www.example.org/automotive#Actuator">
+      <rdfs:label>
+         Actuator
+      </rdfs:label>
+      <rdfs:comment>
+         A component responsible for moving or controlling a mechanism or system.
+      </rdfs:comment>
+      <dc:description>
+         Executes physical actions, such as braking, based on ECU commands.
+      </dc:description>
+   </owl:Class>
+
+   <owl:Class rdf:about="http://www.example.org/automotive#PhysicalParameter">
+      <rdfs:label>Physical Parameter</rdfs:label>
+      <rdfs:comment>A measurable characteristic of the vehicle state.</rdfs:comment>
+      <dc:description>
+         Includes variables like speed, pressure, temperature, and voltage.
+      </dc:description>
+   </owl:Class>
 
    <!-- Manufacturing -->
-   <owl:Class rdf:about="http://www.example.org/automotive#ManufacturingProcess"/>
-   <owl:Class rdf:about="http://www.example.org/automotive#Material"/>
-   <owl:Class rdf:about="http://www.example.org/automotive#ProductionMethodology"/>
-   <owl:Class rdf:about="http://www.example.org/automotive#FactoryTechnology"/>
+   <owl:Class rdf:about="http://www.example.org/automotive#ManufacturingProcess">
+      <rdfs:label>Manufacturing Process</rdfs:label>
+      <dc:description>Industrial workflows used in vehicle production, such as stamping or assembly.</dc:description>
+   </owl:Class>
+
+   <owl:Class rdf:about="http://www.example.org/automotive#Material">
+      <rdfs:label>Material</rdfs:label>
+      <rdfs:comment>Raw substances used in the production of vehicle parts.</rdfs:comment>
+   </owl:Class>
+
+   <owl:Class rdf:about="http://www.example.org/automotive#ProductionMethodology">
+      <rdfs:label>Production Methodology</rdfs:label>
+      <dc:description>Management frameworks like Just-in-Time (JIT) or Lean Manufacturing.</dc:description>
+   </owl:Class>
+
+   <owl:Class rdf:about="http://www.example.org/automotive#FactoryTechnology">
+      <rdfs:label>Factory Technology</rdfs:label>
+      <dc:description>Advanced tools used on the shop floor, including AGVs and Digital Twins.</dc:description>
+   </owl:Class>
 
    <!-- QA -->
-   <owl:Class rdf:about="http://www.example.org/automotive#QAActivity"/>
-   <owl:Class rdf:about="http://www.example.org/automotive#Defect"/>
-   <owl:Class rdf:about="http://www.example.org/automotive#Documentation"/>
+   <owl:Class rdf:about="http://www.example.org/automotive#QAActivity">
+      <rdfs:label>Quality Assurance Activity</rdfs:label>
+      <dc:description>Systematic processes for verifying that components meet safety and performance specs.</dc:description>
+   </owl:Class>
+
+   <owl:Class rdf:about="http://www.example.org/automotive#Defect">
+      <rdfs:label>Defect</rdfs:label>
+      <rdfs:comment>An imperfection or failure in a component or process.</rdfs:comment>
+   </owl:Class>
+
+   <owl:Class rdf:about="http://www.example.org/automotive#Documentation">
+      <rdfs:label>Documentation</rdfs:label>
+      <dc:description>Traceable records and reports required for audits and compliance (Branch 3).</dc:description>
+   </owl:Class>
 
    <!-- Compliance -->
-   <owl:Class rdf:about="http://www.example.org/automotive#Standard"/>
+   <owl:Class rdf:about="http://www.example.org/automotive#Standard">
+      <rdfs:label>Regulatory Standard</rdfs:label>
+      <dc:description>Formal ISO or IATF frameworks governing automotive quality and security.</dc:description>
+   </owl:Class>
 
    <!-- Security and Maintenance-->
-   <owl:Class rdf:about="http://www.example.org/automotive#SecurityMeasure"/>
-   <owl:Class rdf:about="http://www.example.org/automotive#MaintenanceActivity"/>
+   <owl:Class rdf:about="http://www.example.org/automotive#SecurityMeasure">
+      <rdfs:label>Security Control</rdfs:label>
+      <dc:description>Hardware or software safeguards designed to protect the vehicle from cyber-physical threats.</dc:description>
+   </owl:Class>
+
+   <owl:Class rdf:about="http://www.example.org/automotive#MaintenanceActivity">
+      <rdfs:label>Maintenance Activity</rdfs:label>
+      <dc:description>Preventive tasks performed to ensure vehicle reliability and longevity.</dc:description>
+   </owl:Class>
 
 
    <!-- Object Properties -->
