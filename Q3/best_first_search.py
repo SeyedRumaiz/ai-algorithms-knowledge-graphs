@@ -68,7 +68,7 @@ class BestFirstSearch(SearchAlgorithm):
         heapq.heappush(open_list, (self.heuristic(self.start, self.goal), self.start))
 
         # Path reconstruction dictionary
-        came_from = {self.start: None}
+        came_from = {self.start: None}  # Child-parent mapping
         visited = set()  # Nodes already expanded
         visited_order = []  # Visited order of nodes
         time = 0
@@ -108,7 +108,7 @@ class BestFirstSearch(SearchAlgorithm):
                         neighbor not in came_from):  # Prevents overwriting parent + duplicates
                     neighbors.append(neighbor)
 
-            # Since neighbors processed in increasing node ID
+            # Since neighbors processed in increasing node ID (consistent ordering)
             neighbors.sort(key=self.to_node_id)
 
             for neighbor in neighbors:
