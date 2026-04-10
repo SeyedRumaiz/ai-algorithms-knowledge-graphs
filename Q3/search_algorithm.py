@@ -3,8 +3,17 @@ from abc import ABC, abstractmethod
 
 
 class SearchAlgorithm(ABC):
+    """
+    Abstract class for a search algorithm.
+    """
 
     def __init__(self, maze, start, goal):
+        """
+
+        :param maze:
+        :param start:
+        :param goal:
+        """
         self.maze = maze
         self.start = start
         self.goal = goal
@@ -57,25 +66,31 @@ class SearchAlgorithm(ABC):
     def is_valid(self, grid: np.ndarray, position: tuple[int, int]) -> bool:
         """
         Checks if a point is within the bounds of the grid.
-        It also checks is free.
+        It also checks th current position is free.
 
         Args:
             grid (numpy.ndarray): Grid of point.
             position (tuple[int, int]): (x, y) Coordinates of the point.
 
         Returns:
-            boo: True if the point is within the bounds of the grid and is free.
+            bool: True if the point is within the bounds of the grid and is free.
         """
         return self.in_bounds(position, grid) and self.is_free(grid, position)
 
 
     def get_cost(self, path):
-        iter = len(path) - 1
+        """
+        Calculates the cost of the path.
+
+        :param path:
+        :return:
+        """
+        n_iter = len(path) - 1
         total_cost = 0
         straight = 0
         diagonal = 0
 
-        for i in range(iter):
+        for i in range(n_iter):
             tup = path[i]
             tup_next = path[i + 1]
             dx = abs(tup[0] - tup_next[0])
