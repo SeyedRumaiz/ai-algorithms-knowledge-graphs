@@ -9,10 +9,12 @@ class SearchAlgorithm(ABC):
 
     def __init__(self, maze, start, goal):
         """
+        Initializes the search algorithm.
 
-        :param maze:
-        :param start:
-        :param goal:
+        Args:
+            maze: The maze to search.
+            start: The starting point.
+            goal: The goal point.
         """
         self.maze = maze
         self.start = start
@@ -23,6 +25,9 @@ class SearchAlgorithm(ABC):
 
     @abstractmethod
     def search(self):
+        """
+        Abstract method to be implemented by subclasses.
+        """
         pass
 
     def in_bounds(self, pos, grid) -> bool:
@@ -46,6 +51,9 @@ class SearchAlgorithm(ABC):
         Args:
             grid (numpy.ndarray): Grid of point.
             pos (tuple[int, int]): (x, y) Coordinates of the point.
+
+        Returns:
+            bool: True if the point is free.
         """
         x, y = pos
         return grid[y][x] == 0
@@ -80,10 +88,20 @@ class SearchAlgorithm(ABC):
 
     def get_cost(self, path):
         """
-        Calculates the cost of the path.
+        Computes the cost of a path.
 
-        :param path:
-        :return:
+        Straight move cost = 1
+        Diagonal move cost = √2
+
+        Args:
+            path (list[tuple[int, int]]):
+                Sequence of coordinates from start to goal.
+
+        Returns:
+            tuple:
+                total_cost (float): Sum of movement costs.
+                straight (int): Number of straight moves.
+                diagonal (int): Number of diagonal moves.
         """
         n_iter = len(path) - 1
         total_cost = 0
@@ -96,11 +114,13 @@ class SearchAlgorithm(ABC):
             dx = abs(tup[0] - tup_next[0])
             dy = abs(tup[1] - tup_next[1])
 
+            # Detect movement type
             if dx == 1 and dy == 1:
                 diagonal += 1
             else:
                 straight += 1
 
+            # Euclidean movement cost
             cost = np.sqrt(dx**2 + dy**2)
             total_cost += cost
         return total_cost, straight, diagonal
