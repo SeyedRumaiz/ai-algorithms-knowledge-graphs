@@ -61,10 +61,10 @@ def generate_maze(start_coords: Tuple[int, int],
     Returns:
         Tuple[List[List[int]], set]:
             maze (List[List[int]]): 2D representation of the maze.
-            barriers (set): Set of barrier coordinate tuples (x,y)
+            barriers (set): Set of barrier coordinate tuples (x,y).
     """
     maze = [[0] * 6 for _ in range(6)]
-    barriers = set()
+    barriers = set()        # Unique barriers
 
     while len(barriers) < 4:
         barrier_row = random.randint(0, 5)
