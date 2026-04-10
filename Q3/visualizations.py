@@ -65,10 +65,10 @@ def plot(iddfs, best, title, ylabel, filename) -> None:
     Create and save a bar chart comparing two algorithms.
 
     Args:
-        iddfs (float | int):
+        iddfs (Float[Any]):
             Metric value for the IDDFS algorithm.
 
-        best (float | int):
+        best (Float[Any]):
             Metric value for the Best-First Search algorithm.
 
         title (str):

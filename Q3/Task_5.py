@@ -1,6 +1,5 @@
 import numpy as np
 import random
-
 from visualizations import visualize_path, plot, show_summary_run
 from heuristics import chebyshev
 from best_first_search import BestFirstSearch

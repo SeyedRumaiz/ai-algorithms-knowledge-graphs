@@ -45,6 +45,7 @@ class IterativeDeepeningDFS(SearchAlgorithm):
             """
             Performs depth limited search recursively.
             Needed since DLS is only needed as part of IDDFS.
+            Used as a helper function.
 
             Args:
                 node (tuple[int, int]): (x, y) Coordinates of the point.
@@ -64,9 +65,11 @@ class IterativeDeepeningDFS(SearchAlgorithm):
 
             # Check if depth limit was reached and goal was not to be found
             if depth == 0:
+
+                # Cannot go deeper, so stop this branch and backtrack
                 return None, visited_order
 
-            # Build neighbors list
+            # Build neighbors list (next possible moves)
             neighbors = []
 
             # Find all possible next moves from current node
@@ -82,24 +85,36 @@ class IterativeDeepeningDFS(SearchAlgorithm):
 
                 # Create a new list without modification to the old one
                     result, child_visited = dls(nxt, depth - 1, path + [nxt])  # Recurse deeper
+
+                    # Merge visited nodes from the child recursion
                     visited_order.extend(child_visited)
                     if result is not None:
+
+                        # Immediately return the result up the recursion stack
                         return result, visited_order   # If recursive found a path
 
             return None, visited_order # If none of the moves lead to the goal within this depth
 
+        # Start IDDFS loop
         depth = 0
-        total_visited = []
+        total_visited = []  # Visited nodes across all depth levels
 
         max_depth = self.MAX_SIZE * self.MAX_SIZE
 
-        while depth <= max_depth: # keep increasing depth until it finds a path
-            result, visited_this_depth = dls(self.start, depth, [self.start]) # if no path, it will never stop
+        while depth <= max_depth: # Keep increasing depth until it finds a path
+
+            # If no path, it will never stop
+            result, visited_this_depth = dls(self.start, depth, [self.start])
+
+            # Accumulate visited nodes from this depth iteration (track all nodes)
             total_visited.extend(visited_this_depth)
 
+            # If goal not found, stop IDDFS
             if result is not None:
                 time = len(total_visited)
                 total_cost, straight, diagonal = self.get_cost(path=result)
                 return total_visited, time, result, total_cost, straight, diagonal   # if path found, stop iddfs
             depth += 1  # else increase depth by 1
+
+        # If no path exists
         return total_visited, len(total_visited), None, None, None, None
