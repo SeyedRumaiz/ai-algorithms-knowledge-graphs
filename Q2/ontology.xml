@@ -37,14 +37,34 @@
 
    <owl:Class rdf:about="http://www.example.org/automotive#PowertrainSystem">
       <rdfs:subClassOf rdf:resource="http://www.example.org/automotive#Subsystem"/>
+      <rdfs:label>
+         Powertrain System.
+      </rdfs:label>
+      <rdfs:comment>
+         The Powertrain System includes components responsible for generating and delivering
+         power to the vehicle.
+      </rdfs:comment>
    </owl:Class>
 
    <owl:Class rdf:about="http://www.example.org/automotive#BrakeSystem">
       <rdfs:subClassOf rdf:resource="http://www.example.org/automotive#Subsystem"/>
+      <rdfs:label>
+         Brake System
+      </rdfs:label>
+      <rdfs:comment>
+         Responsible for slowing down or stopping the vehicle.
+      </rdfs:comment>
    </owl:Class>
 
    <owl:Class rdf:about="http://www.example.org/automotive#InfotainmentSystem">
       <rdfs:subClassOf rdf:resource="http://www.example.org/automotive#Subsystem"/>
+      <rdfs:label>
+         Infotainment System
+      </rdfs:label>
+      <rdfs:comment>
+         Provides in-vehicle entertainment and information services including
+         navigation, and media playback, etc.
+      </rdfs:comment>
    </owl:Class>
 
    <owl:Class rdf:about="http://www.example.org/automotive#ECU">
