@@ -1,110 +1,171 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rdf:RDF
-    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
-    xmlns:owl="http://www.w3.org/2002/07/owl#"
-    xmlns:dc="http://purl.org/dc/elements/1.1/"
-    xmlns:auto="http://www.example.org/automotive#">
+        xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+        xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+        xmlns:owl="http://www.w3.org/2002/07/owl#"
+        xmlns:dc="http://purl.org/dc/elements/1.1/"
+        xmlns:auto="http://www.example.org/automotive#">
 
    <!-- Header -->
    <owl:Ontology rdf:about="http://www.example.org/automotive">
       <dc:title>
          Ontology for Automotive Industry.
       </dc:title>
+      <dc:description>
+         A comprehensive ontology mapping vehicle components, manufacturing processes,
+         quality assurance workflows, and regulatory compliance standards.
+      </dc:description>
    </owl:Ontology>
 
-   <!--  ////   Classes   ////    -->
+   <!---     Classes       -->
 
    <!-- Vehicle Components -->
    <owl:Class rdf:about="http://www.example.org/automotive#Vehicle">
-        <dc:title>Vehicle</dc:title>
-        <dc:description>
-            A road vehicle manufactured within the automotive production lifecycle.
-        </dc:description>
+      <rdfs:label>Vehicle</rdfs:label>
+      <rdfs:comment>A road vehicle consisting of multiple electronic and mechanical subsystems.</rdfs:comment>
    </owl:Class>
 
    <owl:Class rdf:about="http://www.example.org/automotive#Subsystem">
-        <rdfs:comment>
-            A major functional unit of a vehicle that groups related
-            components and faults.
-        </rdfs:comment>
-        <dc:description>
-            Represents the major functional divisions of a vehicle such as the
-            engine system, braking system, suspension system, and electrical system.
-            Subsystems help organize components and diagnose faults at a higher level.
-        </dc:description>
+      <rdfs:label>
+         Vehicle Subsystem
+      </rdfs:label>
+      <dc:description>
+         A major functional unit of a vehicle responsible for grouping
+         ECUs and mechanical parts.
+      </dc:description>
    </owl:Class>
 
    <owl:Class rdf:about="http://www.example.org/automotive#PowertrainSystem">
       <rdfs:subClassOf rdf:resource="http://www.example.org/automotive#Subsystem"/>
-      <dc:title>Powertrain System</dc:title>
-      <dc:description>
-        The system responsible for generating and delivering power to move the vehicle.
-      </dc:description>
+      <rdfs:label>
+         Powertrain System.
+      </rdfs:label>
+      <rdfs:comment>
+         The Powertrain System includes components responsible for generating and delivering
+         power to the vehicle.
+      </rdfs:comment>
    </owl:Class>
 
    <owl:Class rdf:about="http://www.example.org/automotive#BrakeSystem">
       <rdfs:subClassOf rdf:resource="http://www.example.org/automotive#Subsystem"/>
-      <dc:title>Brake System</dc:title>
-      <dc:description>
-        The subsystem responsible for slowing or stopping the vehicle safety.
-      </dc:description>
+      <rdfs:label>
+         Brake System
+      </rdfs:label>
+      <rdfs:comment>
+         Responsible for slowing down or stopping the vehicle.
+      </rdfs:comment>
    </owl:Class>
 
    <owl:Class rdf:about="http://www.example.org/automotive#InfotainmentSystem">
       <rdfs:subClassOf rdf:resource="http://www.example.org/automotive#Subsystem"/>
-      <dc:title>Infotainment System</dc:title>
-      <dc:description>
-        The subsystem responsible for multimedia, navigation, and connectivity
-        services to the vehicle occupants.
-      </dc:description>
+      <rdfs:label>
+         Infotainment System
+      </rdfs:label>
+      <rdfs:comment>
+         Provides in-vehicle entertainment and information services including
+         navigation, and media playback, etc.
+      </rdfs:comment>
    </owl:Class>
 
    <owl:Class rdf:about="http://www.example.org/automotive#ECU">
-      <dc:title>Electric Control Unit</dc:title>
+      <rdfs:label>
+         Electronic Control Unit
+      </rdfs:label>
+      <rdfs:comment>
+         Responsible for controlling electrical systems or subsystems.
+      </rdfs:comment>
       <dc:description>
-        A device that controls electrical systems or subsystems in the vehicle.
+         Acts as the central controller within the vehicle
+         architecture.
       </dc:description>
    </owl:Class>
 
    <owl:Class rdf:about="http://www.example.org/automotive#Sensor">
-      <dc:title>Sensor</dc:title>
+      <rdfs:label>
+         Sensor
+      </rdfs:label>
+      <rdfs:comment>
+         A hardware device that detects and measures physical properties.
+      </rdfs:comment>
       <dc:description>
-        A device that measures physical parameters like temperature, speed, or pressure.
+         Monitors environmental and mechanical parameters
+         to provide data to the ECU.
       </dc:description>
    </owl:Class>
 
    <owl:Class rdf:about="http://www.example.org/automotive#Actuator">
-      <dc:title>Actuator</dc:title>
+      <rdfs:label>
+         Actuator
+      </rdfs:label>
+      <rdfs:comment>
+         A component responsible for moving or controlling a mechanism or system.
+      </rdfs:comment>
       <dc:description>
-        A device that performs actions in the vehicle.
+         Executes physical actions, such as braking, based on ECU commands.
       </dc:description>
    </owl:Class>
 
    <owl:Class rdf:about="http://www.example.org/automotive#PhysicalParameter">
-      <dc:title>Physical Parameter</dc:title>
+      <rdfs:label>Physical Parameter</rdfs:label>
+      <rdfs:comment>A measurable characteristic of the vehicle state.</rdfs:comment>
       <dc:description>
-        A measurable characteristic of the vehicle, like temperature, speed, or pressure.
+         Includes variables like speed, pressure, temperature, and voltage.
       </dc:description>
    </owl:Class>
 
    <!-- Manufacturing -->
-   <owl:Class rdf:about="http://www.example.org/automotive#ManufacturingProcess"/>
-   <owl:Class rdf:about="http://www.example.org/automotive#Material"/>
-   <owl:Class rdf:about="http://www.example.org/automotive#ProductionMethodology"/>
-   <owl:Class rdf:about="http://www.example.org/automotive#FactoryTechnology"/>
+   <owl:Class rdf:about="http://www.example.org/automotive#ManufacturingProcess">
+      <rdfs:label>Manufacturing Process</rdfs:label>
+      <dc:description>Industrial workflows used in vehicle production, such as stamping or assembly.</dc:description>
+   </owl:Class>
+
+   <owl:Class rdf:about="http://www.example.org/automotive#Material">
+      <rdfs:label>Material</rdfs:label>
+      <rdfs:comment>Raw substances used in the production of vehicle parts.</rdfs:comment>
+   </owl:Class>
+
+   <owl:Class rdf:about="http://www.example.org/automotive#ProductionMethodology">
+      <rdfs:label>Production Methodology</rdfs:label>
+      <dc:description>Management frameworks like Just-in-Time (JIT).</dc:description>
+   </owl:Class>
+
+   <owl:Class rdf:about="http://www.example.org/automotive#FactoryTechnology">
+      <rdfs:label>Factory Technology</rdfs:label>
+      <dc:description>Advanced tools used on the shop floor, including AGVs and Digital Twins.</dc:description>
+   </owl:Class>
 
    <!-- QA -->
-   <owl:Class rdf:about="http://www.example.org/automotive#QAActivity"/>
-   <owl:Class rdf:about="http://www.example.org/automotive#Defect"/>
-   <owl:Class rdf:about="http://www.example.org/automotive#Documentation"/>
+   <owl:Class rdf:about="http://www.example.org/automotive#QAActivity">
+      <rdfs:label>Quality Assurance Activity</rdfs:label>
+      <dc:description>Systematic processes for verifying that components meet safety and performance specs.</dc:description>
+   </owl:Class>
+
+   <owl:Class rdf:about="http://www.example.org/automotive#Defect">
+      <rdfs:label>Defect</rdfs:label>
+      <rdfs:comment>An imperfection or failure in a component or process.</rdfs:comment>
+   </owl:Class>
+
+   <owl:Class rdf:about="http://www.example.org/automotive#Documentation">
+      <rdfs:label>Documentation</rdfs:label>
+      <dc:description>Traceable records and reports required for audits and compliance.</dc:description>
+   </owl:Class>
 
    <!-- Compliance -->
-   <owl:Class rdf:about="http://www.example.org/automotive#Standard"/>
+   <owl:Class rdf:about="http://www.example.org/automotive#Standard">
+      <rdfs:label>Standard</rdfs:label>
+      <dc:description>Formal ISO or IATF frameworks governing automotive quality and security.</dc:description>
+   </owl:Class>
 
    <!-- Security and Maintenance-->
-   <owl:Class rdf:about="http://www.example.org/automotive#SecurityMeasure"/>
-   <owl:Class rdf:about="http://www.example.org/automotive#MaintenanceActivity"/>
+   <owl:Class rdf:about="http://www.example.org/automotive#SecurityMeasure">
+      <rdfs:label>Security Measure</rdfs:label>
+      <dc:description>Hardware or software safeguards designed to protect the vehicle from cyber-physical threats.</dc:description>
+   </owl:Class>
+
+   <owl:Class rdf:about="http://www.example.org/automotive#MaintenanceActivity">
+      <rdfs:label>Maintenance Activity</rdfs:label>
+      <dc:description>Preventive tasks performed to ensure vehicle reliability.</dc:description>
+   </owl:Class>
 
 
    <!-- Object Properties -->
@@ -137,7 +198,7 @@
       <auto:hasSubSystem rdf:resource="http://www.example.org/automotive#BrakeSystemX"/>
       <auto:producedByProcess rdf:resource="http://www.example.org/automotive#Stamping"/>
       <auto:producedByProcess rdf:resource="http://www.example.org/automotive#InjectionMoulding"/>
-      <auto:vehicleCompliesWith rdf:resource="http://www.example.org/automotive#IATF16949"/>
+      <auto:vehicleCompliesWith rdf:resource="http://www.example.org/automotive#ISO27001"/>
    </rdf:Description>
 
    <rdf:Description rdf:about="http://www.example.org/automotive#Powertrain">
@@ -192,7 +253,7 @@
 
    <rdf:Description rdf:about="http://www.example.org/automotive#AGV">
       <rdf:type rdf:resource="http://www.example.org/automotive#FactoryTechnology"/>
-      <auto:supportsProcess rdf:resource="http://www.example.org/automotive#Stamping"/>
+      <auto:supportsProcess rdf:resource="http://www.example.org/automotive#InjectionMoulding"/>
    </rdf:Description>
 
    <rdf:Description rdf:about="http://www.example.org/automotive#DigitalTwin">
@@ -204,12 +265,18 @@
       <rdf:type rdf:resource="http://www.example.org/automotive#QAActivity"/>
       <auto:qaDocuments rdf:resource="http://www.example.org/automotive#InspectionReport"/>
       <auto:qaEnsuresCompliance rdf:resource="http://www.example.org/automotive#IATF16949"/>
-      <auto:monitorsProcess rdf:resource="http://www.example.org/automotive#Stamping"/>
       <auto:detectsDefect rdf:resource="http://www.example.org/automotive#BrakeFailure"/>
    </rdf:Description>
 
    <rdf:Description rdf:about="http://www.example.org/automotive#InspectionReport">
       <rdf:type rdf:resource="http://www.example.org/automotive#Documentation"/>
+   </rdf:Description>
+
+   <rdf:Description rdf:about="http://www.example.org/automotive#InspectionReportX">
+      <rdf:type rdf:resource="http://www.example.org/automotive#Documentation"/>
+      <dc:title>
+         Stamping Quality Report
+      </dc:title>
       <auto:supportsStandard rdf:resource="http://www.example.org/automotive#IATF16949"/>
    </rdf:Description>
 
@@ -245,6 +312,13 @@
    <!-- Security and Maintenance    -->
    <rdf:Description rdf:about="http://www.example.org/automotive#SecureBoot">
       <rdf:type rdf:resource="http://www.example.org/automotive#SecurityMeasure"/>
+      <auto:securityProtects rdf:resource="http://www.example.org/automotive#CarModelX"/>
+   </rdf:Description>
+
+   <rdf:Description rdf:about="http://www.example.org/automotive#SecureBootX">
+      <rdf:type rdf:resource="http://www.example.org/automotive#SecurityMeasure"/>
+      <rdfs:label>Hardware Secure Boot</rdfs:label>
+      <dc:description>Prevents unauthorized firmware from executing during the ECU startup phase.</dc:description>
       <auto:securityProtects rdf:resource="http://www.example.org/automotive#CarModelX"/>
    </rdf:Description>
 

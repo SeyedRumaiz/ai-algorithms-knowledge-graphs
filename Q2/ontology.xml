@@ -126,7 +126,7 @@
 
    <owl:Class rdf:about="http://www.example.org/automotive#ProductionMethodology">
       <rdfs:label>Production Methodology</rdfs:label>
-      <dc:description>Management frameworks like Just-in-Time (JIT) or Lean Manufacturing.</dc:description>
+      <dc:description>Management frameworks like Just-in-Time (JIT).</dc:description>
    </owl:Class>
 
    <owl:Class rdf:about="http://www.example.org/automotive#FactoryTechnology">
@@ -147,24 +147,24 @@
 
    <owl:Class rdf:about="http://www.example.org/automotive#Documentation">
       <rdfs:label>Documentation</rdfs:label>
-      <dc:description>Traceable records and reports required for audits and compliance (Branch 3).</dc:description>
+      <dc:description>Traceable records and reports required for audits and compliance.</dc:description>
    </owl:Class>
 
    <!-- Compliance -->
    <owl:Class rdf:about="http://www.example.org/automotive#Standard">
-      <rdfs:label>Regulatory Standard</rdfs:label>
+      <rdfs:label>Standard</rdfs:label>
       <dc:description>Formal ISO or IATF frameworks governing automotive quality and security.</dc:description>
    </owl:Class>
 
    <!-- Security and Maintenance-->
    <owl:Class rdf:about="http://www.example.org/automotive#SecurityMeasure">
-      <rdfs:label>Security Control</rdfs:label>
+      <rdfs:label>Security Measure</rdfs:label>
       <dc:description>Hardware or software safeguards designed to protect the vehicle from cyber-physical threats.</dc:description>
    </owl:Class>
 
    <owl:Class rdf:about="http://www.example.org/automotive#MaintenanceActivity">
       <rdfs:label>Maintenance Activity</rdfs:label>
-      <dc:description>Preventive tasks performed to ensure vehicle reliability and longevity.</dc:description>
+      <dc:description>Preventive tasks performed to ensure vehicle reliability.</dc:description>
    </owl:Class>
 
 
