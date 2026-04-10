@@ -12,6 +12,8 @@ iddfs_times = []
 iddfs_lengths = []
 best_times = []
 best_lengths = []
+iddfs_costs = []
+best_costs = []
 N_RUNS = 3
 SEED = 42   # Seed for reproducibility
 
@@ -34,7 +36,8 @@ for i in range(N_RUNS):
      iddfs_total_cost, iddfs_straight, iddfs_diagonal)\
         = iddfs.search()
     iddfs_times.append(iddfs_time)
-    iddfs_lengths.append(len(iddfs_result) if iddfs_result else 0)
+    iddfs_costs.append(iddfs_total_cost)
+    iddfs_lengths.append(len(iddfs_result)-1 if iddfs_result else 0)
 
     # View IDDFS statistics and final path
     show_summary_run(start_coords, goal_coords, barriers, iddfs_total_visited,
@@ -47,7 +50,8 @@ for i in range(N_RUNS):
     # Add BestFS readings
     (best_total_visited, best_time, best_result,
      best_total_cost, best_straight, best_diagonal) = best_first_search.search()
-    best_lengths.append(len(best_result) if best_result else 0)
+    best_lengths.append(len(best_result)-1 if best_result else 0)
+    best_costs.append(best_total_cost)
     best_times.append(best_time)
 
     # View BestFS statistics and final path
@@ -58,6 +62,7 @@ for i in range(N_RUNS):
 
     visualize_path(maze, best_result, start_coords, goal_coords, title="BestFS path")
 
+# Statistics calculation
 
 # Get mean times for both algorithms
 mean_iddfs_time = np.mean(iddfs_times)
@@ -72,6 +77,20 @@ var_best_time = np.var(best_times)
 
 plot(var_iddfs_time, var_best_time, title="Plot of variance times",
      ylabel="Time (minutes)", filename="assets/Task_5/iddfs_bestfs_var_time.png")
+
+# Mean path costs for both algorithms
+mean_iddfs_cost = np.mean(iddfs_costs)
+mean_best_cost = np.mean(best_costs)
+
+plot(mean_iddfs_cost, mean_best_cost, title="Plot of mean costs",
+     ylabel="Cost", filename="assets/Task_5/iddfs_bestfs_mean_cost.png")
+
+# Variance path costs for both algorithms
+var_iddfs_cost = np.var(iddfs_costs)
+var_best_cost = np.var(best_costs)
+
+plot(var_iddfs_cost, var_best_cost, title="Plot of variance costs",
+     ylabel="Cost", filename="assets/Task_5/iddfs_bestfs_var_cost_var.png")
 
 # Mean path lengths for both algorithms
 mean_iddfs_length = np.mean(iddfs_lengths)
