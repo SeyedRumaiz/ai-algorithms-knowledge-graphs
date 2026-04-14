@@ -4,21 +4,34 @@ import numpy as np
 
 def visualize_path(grid, path, start, goal, title) -> None:
     """
+    Visualize the maze grid and the final path found by a search algorithm.
 
+    Args:
+        grid (list[list[int]] | np.ndarray):
+            2D maze grid where 0 = free cell and 1 = obstacle.
 
-    :param grid:
-    :param path:
-    :param start:
-    :param goal:
-    :param title:
-    :return:
+        path (list[tuple[int, int]] | None):
+            List of coordinates representing the final path from start to goal.
+            If None, only the maze and start/goal will be displayed.
+
+        start (tuple[int, int]):
+            Coordinates of the start node (x, y).
+
+        goal (tuple[int, int]):
+            Coordinates of the goal node (x, y).
+
+        title (str):
+            Title displayed on top of the plot.
+
+    Returns:
+        None
     """
-    grid_visual = np.array(grid)
+    grid_visual = np.array(grid)    # Easier for matplotlib and to get shape
 
     plt.figure(figsize=(6, 6))
     plt.imshow(grid_visual, cmap="binary", origin="upper")
 
-    # Path is list of (x, y)
+    # Path is list of (x, y), if available
     if path:
         xs = [x for x, y in path]
         ys = [y for x, y in path]
@@ -43,20 +56,32 @@ def visualize_path(grid, path, start, goal, title) -> None:
     plt.title(title, fontsize=16, fontweight="bold")
 
     plt.xlim(-0.5, cols - 0.5)
-    plt.ylim(rows - 0.5, -0.5)  # Keeps (0,0) at top-left like the maze
+    plt.ylim(rows - 0.5, -0.5)  # Keeps (0,0) at top-left
 
     plt.show()
 
-
 def plot(iddfs, best, title, ylabel, filename) -> None:
     """
+    Create and save a bar chart comparing two algorithms.
 
-    :param iddfs:
-    :param best:
-    :param title:
-    :param ylabel:
-    :param filename:
-    :return:
+    Args:
+        iddfs (Float[Any]):
+            Metric value for the IDDFS algorithm.
+
+        best (Float[Any]):
+            Metric value for the Best-First Search algorithm.
+
+        title (str):
+            Title of the chart.
+
+        ylabel (str):
+            Label for the y-axis.
+
+        filename (str):
+            File name used to save the figure as an image.
+
+    Returns:
+        None
     """
     labels = ["IDDFS", "BestFS"]
     values = [iddfs, best]
@@ -88,22 +113,44 @@ def plot(iddfs, best, title, ylabel, filename) -> None:
     plt.show()
 
 
-def show_summary_run(start, goal, barriers, visited, time_taken, path, cost=None,
-                    straight=None, diagonal=None, title=None) -> None:
+def show_summary_run(start, goal, barriers, visited, time_taken, path,
+                     cost=None, straight=None, diagonal=None, title=None) -> None:
     """
+    Print a formatted console summary of a search algorithm run.
 
+    Args:
+        start (tuple[int, int]):
+            Start node coordinates.
 
-    :param start:
-    :param goal:
-    :param barriers:
-    :param visited:
-    :param time_taken:
-    :param path:
-    :param cost:
-    :param straight:
-    :param diagonal:
-    :param title:
-    :return:
+        goal (tuple[int, int]):
+            Goal node coordinates.
+
+        barriers (set[tuple[int, int]]):
+            Set of obstacle coordinates in the maze.
+
+        visited (list[tuple[int, int]]):
+            Order of nodes expanded during the search.
+
+        time_taken (int):
+            Total number of nodes expanded.
+
+        path (list[tuple[int, int]]):
+            Final path from start to goal.
+
+        cost (float):
+            Total path cost.
+
+        straight (int):
+            Number of straight moves in the path.
+
+        diagonal (int):
+            Number of diagonal moves in the path.
+
+        title (str):
+            Title printed at the top of the summary.
+
+    Returns:
+        None
     """
     print("\n" + "=" * 70)
     print(title)
@@ -124,6 +171,8 @@ def show_summary_run(start, goal, barriers, visited, time_taken, path, cost=None
 
     print("-"*70)
     print("Visited nodes (prefix):")
+
+    # Prepare a prefix of the visited list (if many nodes present)
     preview = visited[:40]
     print("  " + ", ".join(map(str, preview)) + (" ..." if len(visited) > 40 else ""))
     print("="*70 + "\n")

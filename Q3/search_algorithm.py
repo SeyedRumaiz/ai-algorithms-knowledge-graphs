@@ -9,10 +9,12 @@ class SearchAlgorithm(ABC):
 
     def __init__(self, maze, start, goal):
         """
+        Initializes the search algorithm.
 
-        :param maze:
-        :param start:
-        :param goal:
+        Args:
+            maze: The maze to search.
+            start: The starting point.
+            goal: The goal point.
         """
         self.maze = maze
         self.start = start
@@ -23,6 +25,9 @@ class SearchAlgorithm(ABC):
 
     @abstractmethod
     def search(self):
+        """
+        Abstract method to be implemented by subclasses.
+        """
         pass
 
     def in_bounds(self, pos, grid) -> bool:
@@ -42,10 +47,14 @@ class SearchAlgorithm(ABC):
     def is_free(self, grid, pos) -> bool:
         """
         Checks if a point is free.
+        Extracts the x and y coordindaes at a position and checks if it's free.
 
         Args:
             grid (numpy.ndarray): Grid of point.
             pos (tuple[int, int]): (x, y) Coordinates of the point.
+
+        Returns:
+            bool: True if the point is free.
         """
         x, y = pos
         return grid[y][x] == 0
@@ -80,27 +89,46 @@ class SearchAlgorithm(ABC):
 
     def get_cost(self, path):
         """
-        Calculates the cost of the path.
+        Computes the cost of a path.
 
-        :param path:
-        :return:
+        Straight move cost = 1
+        Diagonal move cost = √2
+
+        Args:
+            path (list[tuple[int, int]]):
+                Sequence of coordinates from start to goal.
+
+        Returns:
+            tuple:
+                total_cost (float): Sum of movement costs.
+                straight (int): Number of straight moves.
+                diagonal (int): Number of diagonal moves.
         """
+
+        # Number of moves = number of nodes - 1
         n_iter = len(path) - 1
         total_cost = 0
-        straight = 0
-        diagonal = 0
+        straight = 0        # Number of straight paths
+        diagonal = 0        # Number of diagonal paths
 
+        # Loop through all possibles moves
         for i in range(n_iter):
             tup = path[i]
             tup_next = path[i + 1]
+
+            # Compare the coordinates
             dx = abs(tup[0] - tup_next[0])
             dy = abs(tup[1] - tup_next[1])
 
+            # Detect movement type
             if dx == 1 and dy == 1:
                 diagonal += 1
             else:
                 straight += 1
 
+            # Euclidean movement cost
             cost = np.sqrt(dx**2 + dy**2)
+
+            # Increment total cost
             total_cost += cost
         return total_cost, straight, diagonal

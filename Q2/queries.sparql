@@ -1,0 +1,111 @@
+# CQ1
+
+PREFIX auto: <http://www.example.org/automotive#>
+
+SELECT ?subsystem ?ecu ?sensor ?actuator ?standard
+WHERE {
+
+	# Get all subsystems in a vehicle
+	auto:CarModelX auto:hasSubSystem ?subsystem .
+	
+	# ECUs inside subsystems
+	?subsystem auto:containsECU ?ecu .
+	
+	# Component relationships
+	?ecu auto:controlsSensor ?sensor .
+	?ecu auto:controlsActuator ?actuator .
+	?ecu auto:requiresStandard ?standard .
+}
+ORDER BY ?subsystem
+
+
+PREFIX auto: <http://www.example.org/automotive#>
+
+SELECT ?ecu ?sensor ?actuator ?standard
+WHERE {
+  auto:Powertrain auto:containsECU ?ecu .
+  ?ecu auto:controlsSensor ?sensor .
+  ?ecu auto:controlsActuator ?actuator .
+  ?ecu auto:requiresStandard ?standard .
+}
+
+
+
+
+# CQ2
+
+PREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX auto: <http://www.example.org/automotive#>
+
+SELECT ?vehicle ?process ?material ?methodology ?technology
+WHERE {
+	
+	?vehicle auto:producedByProcess ?process .
+	?process auto:processUsesMaterial ?material .
+	?process auto:processFollowsMethodology ?methodology .
+	?process auto:factoryUsesTechnology ?technology .
+}
+
+
+# CQ3
+
+
+PREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX auto: <http://www.example.org/automotive#>
+
+SELECT ?qaActivity ?documentation ?defect ?standard
+WHERE {
+
+	?qaActivity rdf:type auto:QAActivity .
+	?qaActivity auto:qaDocuments ?documentation .
+	?qaActivity auto:detectsDefect ?defect .
+	?qaActivity auto:qaEnsuresCompliance ?standard .
+}
+ORDER BY ?qaActivity
+
+
+
+# CQ4
+
+
+PREFIX auto: <http://www.example.org/automotive#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+SELECT ?standard ?appliedTo
+WHERE {
+
+	?standard rdf:type auto:Standard .
+	
+	{?appliedTo auto:vehicleCompliesWith ?standard . }
+	UNION
+	{?appliedTo auto:requiresStandard ?standard . }
+	UNION
+	{?appliedTo auto:qaEnsuresCompliance ?standard . }
+}
+ORDER BY ?standard
+
+
+
+# CQ5
+
+
+PREFIX auto: <http://www.example.org/automotive#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+SELECT ?item ?appliedTo
+WHERE {
+	
+	{
+		?item rdf:type auto:SecurityMeasure .
+		?item auto:securityProtects ?appliedTo .
+
+	}
+	UNION
+	{
+		?item rdf:type auto:MaintenanceActivity .
+		?item auto:maintenanceAppliedTo ?appliedTo .
+	}
+}
+
