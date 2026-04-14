@@ -3,6 +3,7 @@ from iterative_deepening_DFS import IterativeDeepeningDFS
 from maze_utils import generate_maze, generate_coordinates
 import random
 
+# Seed to ensure reproducibility
 SEED = 42
 random.seed(SEED)
 

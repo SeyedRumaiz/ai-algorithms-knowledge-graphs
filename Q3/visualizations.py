@@ -26,7 +26,7 @@ def visualize_path(grid, path, start, goal, title) -> None:
     Returns:
         None
     """
-    grid_visual = np.array(grid)
+    grid_visual = np.array(grid)    # Easier for matplotlib and to get shape
 
     plt.figure(figsize=(6, 6))
     plt.imshow(grid_visual, cmap="binary", origin="upper")
@@ -171,6 +171,8 @@ def show_summary_run(start, goal, barriers, visited, time_taken, path,
 
     print("-"*70)
     print("Visited nodes (prefix):")
+
+    # Prepare a prefix of the visited list (if many nodes present)
     preview = visited[:40]
     print("  " + ", ".join(map(str, preview)) + (" ..." if len(visited) > 40 else ""))
     print("="*70 + "\n")

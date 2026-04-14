@@ -7,10 +7,11 @@ from best_first_search import BestFirstSearch
 from iterative_deepening_DFS import IterativeDeepeningDFS
 from maze_utils import generate_maze, generate_coordinates
 
-
+# Total of 3 runs needed, and ensure reproducibility
 N_RUNS = 3
 SEED = 42
 
+# Heuristics used
 heuristics = {
     "Euclidean": euclidean,
     "Manhattan": manhattan,
@@ -20,7 +21,7 @@ heuristics = {
 # Generate the same runs once
 random.seed(SEED)
 
-runs = []
+runs = []   # Stores all mazes
 
 # Generate 3 random mazes
 for i in range(N_RUNS):
@@ -28,13 +29,14 @@ for i in range(N_RUNS):
     maze, barriers = generate_maze(start_coords, goal_coords)
     runs.append((maze, barriers, start_coords, goal_coords))
 
-
+# IDDFS metrics
 iddfs_times = []
 iddfs_lengths = []
 iddfs_cost = []
 
 
-for i, (maze, barriers, start_coords, goal_coords) in enumerate(runs, start=1):
+# Run IDDFS for the mazes
+for i, (maze, barriers, start_coords, goal_coords) in enumerate(runs, start=1): # Adjust start for display info
     iddfs = IterativeDeepeningDFS(maze, start_coords, goal_coords)
 
     (iddfs_total_visited, iddfs_time, iddfs_result,
@@ -51,6 +53,7 @@ for i, (maze, barriers, start_coords, goal_coords) in enumerate(runs, start=1):
 
     visualize_path(maze, iddfs_result, start_coords, goal_coords, title=f"IDDFS path (Run {i})")
 
+# Calculate key statistics
 iddfs_mean_time = float(np.mean(iddfs_times))
 iddfs_var_time  = float(np.var(iddfs_times))
 iddfs_mean_cost = float(np.mean(iddfs_cost))
@@ -69,6 +72,7 @@ for h_name, h_fn in heuristics.items():
     best_lengths = []
     best_costs = []
 
+    # Run BestFS for a heuristic
     for i, (maze, barriers, start_coords, goal_coords) in enumerate(runs, start=1):
         best_first_search = BestFirstSearch(maze, start_coords, goal_coords, heuristic=h_fn)
 

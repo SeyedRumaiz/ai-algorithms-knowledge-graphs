@@ -75,6 +75,8 @@ class IterativeDeepeningDFS(SearchAlgorithm):
             # Find all possible next moves from current node
             for dx, dy in self.DIRECTIONS:
                 next_pos = (node[0] + dx, node[1] + dy)
+
+                # Check if valid
                 if self.is_valid(self.maze, next_pos) and next_pos not in path:
                     neighbors.append(next_pos)
 

@@ -47,6 +47,7 @@ class SearchAlgorithm(ABC):
     def is_free(self, grid, pos) -> bool:
         """
         Checks if a point is free.
+        Extracts the x and y coordindaes at a position and checks if it's free.
 
         Args:
             grid (numpy.ndarray): Grid of point.
@@ -103,14 +104,19 @@ class SearchAlgorithm(ABC):
                 straight (int): Number of straight moves.
                 diagonal (int): Number of diagonal moves.
         """
+
+        # Number of moves = number of nodes - 1
         n_iter = len(path) - 1
         total_cost = 0
-        straight = 0
-        diagonal = 0
+        straight = 0        # Number of straight paths
+        diagonal = 0        # Number of diagonal paths
 
+        # Loop through all possibles moves
         for i in range(n_iter):
             tup = path[i]
             tup_next = path[i + 1]
+
+            # Compare the coordinates
             dx = abs(tup[0] - tup_next[0])
             dy = abs(tup[1] - tup_next[1])
 
@@ -122,5 +128,7 @@ class SearchAlgorithm(ABC):
 
             # Euclidean movement cost
             cost = np.sqrt(dx**2 + dy**2)
+
+            # Increment total cost
             total_cost += cost
         return total_cost, straight, diagonal
