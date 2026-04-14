@@ -108,4 +108,3 @@ WHERE {
 		?item auto:maintenanceAppliedTo ?appliedTo .
 	}
 }
-

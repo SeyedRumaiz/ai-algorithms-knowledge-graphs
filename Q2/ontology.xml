@@ -31,7 +31,7 @@
 
    <owl:Class rdf:about="http://www.example.org/automotive#Subsystem">
       <rdfs:label>
-         Vehicle Subsystem
+         Subsystem
       </rdfs:label>
       <rdfs:comment>
          A major functional unit within a vehicle.
