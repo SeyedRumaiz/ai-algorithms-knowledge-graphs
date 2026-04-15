@@ -114,7 +114,7 @@
          Actuator
       </rdfs:label>
       <rdfs:comment>
-         A component responsible for moving or controlling a mechanism or system.
+         A component responsible physical actions.
       </rdfs:comment>
       <dc:description>
          Executes physical actions, such as braking, based on ECU commands.
@@ -135,7 +135,7 @@
       <rdfs:comment>
          Industrial workflow used to produce vehicle parts.
       </rdfs:comment>
-      <dc:description>Industrial workflows used in vehicle production, such as stamping or assembly.</dc:description>
+      <dc:description>Industrial workflows used in vehicle production, such as stamping or welding.</dc:description>
    </owl:Class>
 
    <owl:Class rdf:about="http://www.example.org/automotive#Material">
@@ -191,7 +191,7 @@
    <owl:Class rdf:about="http://www.example.org/automotive#Standard">
       <rdfs:label>Standard</rdfs:label>
       <rdfs:comment>
-         Formal ISO.
+         Formal ISO frameworks.
       </rdfs:comment>
       <dc:description>Formal ISO or IATF frameworks governing automotive quality and security.</dc:description>
    </owl:Class>
@@ -363,8 +363,6 @@
 
    <rdf:Description rdf:about="http://www.example.org/automotive#SecureBootX">
       <rdf:type rdf:resource="http://www.example.org/automotive#SecurityMeasure"/>
-      <rdfs:label>Hardware Secure Boot</rdfs:label>
-      <dc:description>Prevents unauthorized firmware from executing during the ECU startup phase.</dc:description>
       <auto:securityProtects rdf:resource="http://www.example.org/automotive#CarModelX"/>
    </rdf:Description>
 
