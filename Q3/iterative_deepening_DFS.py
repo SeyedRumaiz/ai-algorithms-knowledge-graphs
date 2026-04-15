@@ -80,13 +80,14 @@ class IterativeDeepeningDFS(SearchAlgorithm):
                 if self.is_valid(self.maze, next_pos) and next_pos not in path:
                     neighbors.append(next_pos)
 
+            # Sort in ascending node ID
             neighbors.sort(key=self.to_node_id)
 
             # Core of the recursion - explores each neighbors recursively
             for nxt in neighbors:
 
                 # Create a new list without modification to the old one
-                    result, child_visited = dls(nxt, depth - 1, path + [nxt])  # Recurse deeper
+                    result, child_visited = dls(node=nxt, depth=depth - 1, path=path + [nxt])  # Recurse deeper
 
                     # Merge visited nodes from the child recursion
                     visited_order.extend(child_visited)
@@ -106,7 +107,7 @@ class IterativeDeepeningDFS(SearchAlgorithm):
         while depth <= max_depth: # Keep increasing depth until it finds a path
 
             # If no path, it will never stop
-            result, visited_this_depth = dls(self.start, depth, [self.start])
+            result, visited_this_depth = dls(node=self.start, depth=depth, path=[self.start])
 
             # Accumulate visited nodes from this depth iteration (track all nodes)
             total_visited.extend(visited_this_depth)

@@ -67,6 +67,7 @@ items = {}
 bestfs_stats_by_heuristic = {}     # For plotting across heuristics
 
 
+# Loop through all the heuristics
 for h_name, h_fn in heuristics.items():
     best_times = []
     best_lengths = []
