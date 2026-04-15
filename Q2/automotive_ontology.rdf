@@ -6,7 +6,7 @@
      xmlns:dc="http://purl.org/dc/elements/1.1/"
      xmlns:auto="http://www.example.org/automotive#">
 
-   <!-- Header -->
+   <!-- Ontology Header -->
    <owl:Ontology rdf:about="http://www.example.org/automotive#">
       <dc:title>
          Ontology for Automotive Industry.
@@ -23,12 +23,19 @@
    <owl:Class rdf:about="http://www.example.org/automotive#Vehicle">
       <rdfs:label>Vehicle</rdfs:label>
       <rdfs:comment>A road vehicle consisting of multiple electronic and mechanical subsystems.</rdfs:comment>
+      <dc:description>
+         Represents the main automotive product that integrates subsystems, manufacturing processes,
+         security controls and compliance standards.
+      </dc:description>
    </owl:Class>
 
    <owl:Class rdf:about="http://www.example.org/automotive#Subsystem">
       <rdfs:label>
-         Vehicle Subsystem
+         Subsystem
       </rdfs:label>
+      <rdfs:comment>
+         A major functional unit within a vehicle.
+      </rdfs:comment>
       <dc:description>
          A major functional unit of a vehicle responsible for grouping
          ECUs and mechanical parts.
@@ -44,6 +51,9 @@
          The Powertrain System includes components responsible for generating and delivering
          power to the vehicle.
       </rdfs:comment>
+      <dc:description>
+         Includes engine, transmission and supporting control units.
+      </dc:description>
    </owl:Class>
 
    <owl:Class rdf:about="http://www.example.org/automotive#BrakeSystem">
@@ -54,6 +64,9 @@
       <rdfs:comment>
          Responsible for slowing down or stopping the vehicle.
       </rdfs:comment>
+      <dc:description>
+         Includes sensors, actuators and ECUs that control braking performance and safety.
+      </dc:description>
    </owl:Class>
 
    <owl:Class rdf:about="http://www.example.org/automotive#InfotainmentSystem">
@@ -65,6 +78,9 @@
          Provides in-vehicle entertainment and information services including
          navigation, and media playback, etc.
       </rdfs:comment>
+      <dc:description>
+         Includes navigation, multimedia playback, connectivity and user interfaces.
+      </dc:description>
    </owl:Class>
 
    <owl:Class rdf:about="http://www.example.org/automotive#ECU">
@@ -98,7 +114,7 @@
          Actuator
       </rdfs:label>
       <rdfs:comment>
-         A component responsible for moving or controlling a mechanism or system.
+         A component responsible physical actions.
       </rdfs:comment>
       <dc:description>
          Executes physical actions, such as braking, based on ECU commands.
@@ -116,54 +132,84 @@
    <!-- Manufacturing -->
    <owl:Class rdf:about="http://www.example.org/automotive#ManufacturingProcess">
       <rdfs:label>Manufacturing Process</rdfs:label>
-      <dc:description>Industrial workflows used in vehicle production, such as stamping or assembly.</dc:description>
+      <rdfs:comment>
+         Industrial workflow used to produce vehicle parts.
+      </rdfs:comment>
+      <dc:description>Industrial workflows used in vehicle production, such as stamping or welding.</dc:description>
    </owl:Class>
 
    <owl:Class rdf:about="http://www.example.org/automotive#Material">
       <rdfs:label>Material</rdfs:label>
       <rdfs:comment>Raw substances used in the production of vehicle parts.</rdfs:comment>
+      <dc:description>
+         Includes metals, plastics amd composites used in automotive engineering.
+      </dc:description>
    </owl:Class>
 
    <owl:Class rdf:about="http://www.example.org/automotive#ProductionMethodology">
       <rdfs:label>Production Methodology</rdfs:label>
+      <rdfs:comment>
+         Management framework guiding manufacturing.
+      </rdfs:comment>
       <dc:description>Management frameworks like Just-in-Time (JIT).</dc:description>
    </owl:Class>
 
    <owl:Class rdf:about="http://www.example.org/automotive#FactoryTechnology">
       <rdfs:label>Factory Technology</rdfs:label>
+      <rdfs:comment>
+         Advanced technology used in factories.
+      </rdfs:comment>
       <dc:description>Advanced tools used on the shop floor, including AGVs and Digital Twins.</dc:description>
    </owl:Class>
 
    <!-- QA -->
    <owl:Class rdf:about="http://www.example.org/automotive#QAActivity">
       <rdfs:label>Quality Assurance Activity</rdfs:label>
+      <rdfs:comment>
+         Process verifying safety, quality and reliability.
+      </rdfs:comment>
       <dc:description>Systematic processes for verifying that components meet safety and performance specs.</dc:description>
    </owl:Class>
 
    <owl:Class rdf:about="http://www.example.org/automotive#Defect">
       <rdfs:label>Defect</rdfs:label>
       <rdfs:comment>An imperfection or failure in a component or process.</rdfs:comment>
+      <dc:description>
+         Represent the failures detected during testing.
+      </dc:description>
    </owl:Class>
 
    <owl:Class rdf:about="http://www.example.org/automotive#Documentation">
       <rdfs:label>Documentation</rdfs:label>
+      <rdfs:comment>
+         Records used for traceability and compliance.
+      </rdfs:comment>
       <dc:description>Traceable records and reports required for audits and compliance.</dc:description>
    </owl:Class>
 
    <!-- Compliance -->
    <owl:Class rdf:about="http://www.example.org/automotive#Standard">
       <rdfs:label>Standard</rdfs:label>
+      <rdfs:comment>
+         Formal ISO frameworks.
+      </rdfs:comment>
       <dc:description>Formal ISO or IATF frameworks governing automotive quality and security.</dc:description>
    </owl:Class>
 
    <!-- Security and Maintenance-->
    <owl:Class rdf:about="http://www.example.org/automotive#SecurityMeasure">
       <rdfs:label>Security Measure</rdfs:label>
+      <rdfs:comment>
+         Protection against cyber-physical threats.
+      </rdfs:comment>
       <dc:description>Hardware or software safeguards designed to protect the vehicle from cyber-physical threats.</dc:description>
    </owl:Class>
 
    <owl:Class rdf:about="http://www.example.org/automotive#MaintenanceActivity">
       <rdfs:label>Maintenance Activity</rdfs:label>
+      <rdfs:comment>
+         Ensures vehicle reliability.
+      </rdfs:comment>
       <dc:description>Preventive tasks performed to ensure vehicle reliability.</dc:description>
    </owl:Class>
 
@@ -317,8 +363,6 @@
 
    <rdf:Description rdf:about="http://www.example.org/automotive#SecureBootX">
       <rdf:type rdf:resource="http://www.example.org/automotive#SecurityMeasure"/>
-      <rdfs:label>Hardware Secure Boot</rdfs:label>
-      <dc:description>Prevents unauthorized firmware from executing during the ECU startup phase.</dc:description>
       <auto:securityProtects rdf:resource="http://www.example.org/automotive#CarModelX"/>
    </rdf:Description>
 
