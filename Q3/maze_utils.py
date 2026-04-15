@@ -66,6 +66,7 @@ def generate_maze(start_coords: Tuple[int, int],
     maze = [[0] * 6 for _ in range(6)]
     barriers = set()        # Unique barriers
 
+    # Maximum 4 barriers
     while len(barriers) < 4:
         barrier_row = random.randint(0, 5)
         barrier_column = random.randint(0, 5)
