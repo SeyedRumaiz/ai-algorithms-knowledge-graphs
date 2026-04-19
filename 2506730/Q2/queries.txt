@@ -50,7 +50,6 @@ WHERE {
 
 # CQ3
 
-
 PREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX auto: <http://www.example.org/automotive#>
@@ -68,7 +67,6 @@ ORDER BY ?qaActivity
 
 
 # CQ4
-
 
 PREFIX auto: <http://www.example.org/automotive#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
@@ -89,7 +87,6 @@ ORDER BY ?standard
 
 
 # CQ5
-
 
 PREFIX auto: <http://www.example.org/automotive#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
